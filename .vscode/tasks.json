@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "home-manager switch",
+            "type": "shell",
+            "command": "home-manager switch --flake \"${workspaceFolder}\"",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "options": {
+                "statusbar": {
+                    "label": "$(sync) HMS"
+                }
+            }
+        }
+    ]
+}
