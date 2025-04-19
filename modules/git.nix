@@ -1,9 +1,6 @@
 { myConfig, pkgs, ... }:
 
 {
-  # Installation of git
-  home.packages = with pkgs; [ pkgs.git ];
-
   programs.git = {
     enable = true;
     # We can use the unstable version of git if we want to.

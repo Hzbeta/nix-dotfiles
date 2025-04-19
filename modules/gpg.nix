@@ -3,11 +3,11 @@
 {
   # Installation of gpg and pinentry
   home.packages = with pkgs; [
-    gnupg        # GPG program
     pinentry-qt  # Install pinentry qt for GUI, it also contains pinentry-tty and pinentry-curses
   ];
 
   programs.gpg = {
+    package = pkgs.gnupg;
     enable = true;
     settings = {
       default-key = myConfig.user.email;
