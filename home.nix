@@ -27,7 +27,6 @@
     (with pkgs; [
       # Packages from the stable 24.11 Nixpkgs channel.
       nixfmt-rfc-style # A tool to format Nix code.
-      nixpkgs-fmt # A tool to format Nixpkgs code.
     ])
     ++ (with pkgsUnstable; [
       # Packages from the unstable Nixpkgs channel.
