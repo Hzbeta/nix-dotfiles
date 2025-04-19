@@ -4,7 +4,9 @@
         {
             "label": "home-manager switch",
             "type": "shell",
-            "command": "home-manager switch --flake \"${workspaceFolder}\"",
+            // Add `path:` to make sure home-manager uses the file that is untracked by git
+            // Only for debugging
+            "command": "home-manager switch --flake \"path:${workspaceFolder}\"",
             "group": {
                 "kind": "build",
                 "isDefault": true
