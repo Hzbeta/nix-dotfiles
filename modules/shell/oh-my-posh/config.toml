@@ -1,0 +1,122 @@
+"$schema"                 = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+version                   = 3
+enable_cursor_positioning = true # Enable fetching the cursor position in bash and zsh to allow automatic hiding of leading newlines when at the top of the shell
+
+# Transient prompt configuration - controls the simplified prompt for secondary lines
+[transient_prompt]
+  background = "transparent"
+  foreground = "green"
+  template   = "❯ "
+
+# The order of the four sections must not change. It must be from left to right, top to bottom.
+# 1. Top left: Path + Git
+[[blocks]]
+  type      = "prompt"
+  alignment = "left"
+  newline   = true  # This separates the current prompt from the historical transient_prompt.
+
+  # Top-left corner and horizontal line
+  [[blocks.segments]]
+    type       = "text"
+    style      = "plain"
+    foreground = "darkGray"
+    template   = "╭─ "
+
+  # Current directory path segment
+  [[blocks.segments]]
+    type       = "path"
+    style      = "plain"
+    foreground = "cyan"
+    template   = "{{ .Path }} "
+    [blocks.segments.properties]
+      style     = "powerlevel"
+      max_width = 40
+
+  # Git information segment
+  [[blocks.segments]]
+    type       = "git"
+    style      = "plain"
+    foreground = "lightGreen"
+    template   = "on {{ .HEAD }}{{ if and .BranchStatus (not .UpstreamGone) }} {{ .BranchStatus }}{{ end }} "
+    [blocks.segments.properties]
+      branch_icon = " "
+
+# 2. Top right: Environment info + top-right arc
+[[blocks]]
+  type      = "prompt"
+  alignment = "right"
+
+  # Status code - shows error code when command fails
+  [[blocks.segments]]
+    type       = "status"
+    style      = "plain"
+    foreground = "lightRed"
+    template   = " {{ if ne .Code 0 }}✘ {{ .String  }}{{ end }} "
+
+  # Python environment information
+  [[blocks.segments]]
+    type       = "python"
+    style      = "plain"
+    foreground = "cyan"
+    template   = "{{ if not .Error }} {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+    [blocks.segments.properties]
+      display_mode = "environment"
+
+  # Command execution time
+  [[blocks.segments]]
+    type       = "executiontime"
+    style      = "plain"
+    foreground = "yellow"
+    template   = "󰔟 {{ .FormattedMs }} "
+    [blocks.segments.properties]
+      threshold = 1000     # Only show if execution time is greater than this value.
+      style     = "austin"
+
+    # Shell information
+    [[blocks.segments]]
+        type       = "shell"
+        style      = "plain"
+        foreground = "cyan"
+        template   = " {{ .Name }} "
+
+  # Top-right corner and horizontal line
+  [[blocks.segments]]
+    type       = "text"
+    style      = "plain"
+    foreground = "darkGray"
+    template   = "─╮"
+
+# 3. Bottom left: Prompt
+[[blocks]]
+  type      = "prompt"
+  alignment = "left"
+  newline   = true
+
+  # Bottom-left corner
+  [[blocks.segments]]
+    type       = "text"
+    style      = "plain"
+    foreground = "darkGray"
+    template   = "╰─"
+
+  # Prompt symbol - changes color based on status and root permissions
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = "lightGreen"
+    foreground_templates = [
+      "{{ if ne .Code 0 }}lightRed{{ end }}",  # Red for error
+      "{{if .Root}} lightYellow {{ end }}",    # Yellow for root user
+    ]
+    template = "{{ if .Root }} #{{ else }}❯{{ end }} "
+
+# 4. Bottom right: Bottom-right arc, placed in the rprompt block
+[[blocks]]
+  type = "rprompt"
+
+  # Bottom-right corner
+  [[blocks.segments]]
+    type       = "text"
+    style      = "plain"
+    foreground = "darkGray"
+    template   = "─╯"
