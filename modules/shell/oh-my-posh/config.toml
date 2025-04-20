@@ -57,8 +57,8 @@ enable_cursor_positioning = true # Enable fetching the cursor position in bash a
   [[blocks.segments]]
     type       = "python"
     style      = "plain"
-    foreground = "cyan"
-    template   = "{{ if not .Error }} {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+    foreground = "#FFE873"
+    template   = "{{ if not .Error }} {{ if .Venv }}{{ .Venv }}{{ end }}{{ end }} "
     [blocks.segments.properties]
       display_mode = "environment"
 
