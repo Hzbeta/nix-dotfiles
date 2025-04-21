@@ -6,6 +6,7 @@ enable_cursor_positioning = true                                                
 [var]
   Space = "\u2007" # Special space char, width 1, prevents OMP from treating
   # template as empty (needed for .Segments.Contains "PreGit")
+  DefaultPathMaxWidth = 50
   PathMaxWidthPercentWithGit    = 40
   PathMaxWidthPercentWithoutGit = 60
 
@@ -62,7 +63,7 @@ enable_cursor_positioning = true                                                
     template = '{{ if not (.Segments.Contains "PreGit") }}{{ .Var.Space }}{{ end }}{{ .Path }} '
     [blocks.segments.properties]
       style     = "powerlevel"
-      max_width = '{{ if .Segments.Contains "PreGit" }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithGit) 100 }}{{ else }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithoutGit) 100 }}{{ end }}'
+      max_width = '{{ if eq .Shell "bash" }}{{ .Var.DefaultPathMaxWidth }}{{ else }}{{ if .Segments.Contains "PreGit" }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithGit) 100 }}{{ else }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithoutGit) 100 }}{{ end }}{{ end }}'
 
   # Git information segment
   [[blocks.segments]]

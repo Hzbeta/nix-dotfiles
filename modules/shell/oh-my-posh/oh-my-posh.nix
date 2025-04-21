@@ -18,4 +18,6 @@
       export OH_MY_POSH_COLUMNS=$(oh-my-posh get width)
     }
   '';
+  # Bash not supported for mkAfter yet
+  # So we can not use dynamic width for `path`
 }
