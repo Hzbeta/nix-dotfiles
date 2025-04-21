@@ -10,6 +10,10 @@
     enable = true;
     # package = pkgsUnstable.oh-my-posh;
     package = pkgs.oh-my-posh;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableNushellIntegration = false;
+    enableFishIntegration = false;
     settings = builtins.fromTOML (builtins.readFile ./config.toml);
   };
   programs.zsh.initContent = lib.mkAfter ''
