@@ -1,36 +1,68 @@
 "$schema"                 = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 version                   = 3
-enable_cursor_positioning = true # Enable fetching the cursor position in bash and zsh to allow automatic hiding of leading newlines when at the top of the shell
+enable_cursor_positioning = true                                                                                  # Enable cursor position detection in bash/zsh
+# for auto-hiding leading newlines at shell top
 
-# Transient prompt configuration - controls the simplified prompt for secondary lines
+[var]
+  Space = "\u2007" # Special space char, width 1, prevents OMP from treating
+  # template as empty (needed for .Segments.Contains "PreGit")
+  PathMaxWidthPercentWithGit    = 40
+  PathMaxWidthPercentWithoutGit = 60
+
+# Transient prompt config - simplified prompt for secondary lines
 [transient_prompt]
   background = "transparent"
   foreground = "green"
   template   = "❯ "
 
-# The order of the four sections must not change. It must be from left to right, top to bottom.
+# The order of the four sections must be: left to right, top to bottom.
 # 1. Top left: Path + Git
+# 1.1 This block is split into two: the first contains a PreGit segment
+#     to detect if the current dir is a git repo.
+#     Splitting ensures git detection runs before path segment,
+#     as parallel execution otherwise makes
+#     .Segments.Contains "PreGit" unreliable.
 [[blocks]]
   type      = "prompt"
   alignment = "left"
-  newline   = true  # This separates the current prompt from the historical transient_prompt.
+  newline   = true     # Separates current prompt from historical transient_prompt.
 
   # Top-left corner and horizontal line
   [[blocks.segments]]
     type       = "text"
     style      = "plain"
     foreground = "darkGray"
-    template   = "╭─ "
+    template   = "╭─"
+
+  # Git – OMP computes repo status, but template is empty
+  [[blocks.segments]]
+    type  = "git"
+    alias = "PreGit" # Alias to avoid confusion
+    style = "plain"
+    # Can't output nothing, as OMP treats empty segment as false,
+    # making .Segments.Contains "PreGit" unusable. So we output
+    # a special space char instead.
+    template = "{{ .Var.Space }}" # Output special space
+    [blocks.segments.properties]
+      branch_icon = ""
+
+# 1.2 This block contains the path and the actual git info segment
+[[blocks]]
+  type      = "prompt"
+  alignment = "left"
+  newline   = false
 
   # Current directory path segment
   [[blocks.segments]]
     type       = "path"
     style      = "plain"
     foreground = "cyan"
-    template   = "{{ .Path }} "
+    # If PreGit didn't output special space, output it here
+    # to ensure one space between `╭─` and `path` in all cases
+    template = '{{ if not (.Segments.Contains "PreGit") }}{{ .Var.Space }}{{ end }}{{ .Path }} '
     [blocks.segments.properties]
       style     = "powerlevel"
-      max_width = 40
+      max_width = '{{ if .Segments.Contains "PreGit" }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithGit) 100 }}{{ else }}{{ div (mul .Env.OH_MY_POSH_COLUMNS .Var.PathMaxWidthPercentWithoutGit) 100 }}{{ end }}'
 
   # Git information segment
   [[blocks.segments]]
@@ -53,7 +85,7 @@ enable_cursor_positioning = true # Enable fetching the cursor position in bash a
     foreground = "lightRed"
     template   = " {{ if ne .Code 0 }}✘ {{ .String  }}{{ end }} "
 
-  # Python environment information
+  # Python environment info
   [[blocks.segments]]
     type       = "python"
     style      = "plain"
@@ -69,15 +101,15 @@ enable_cursor_positioning = true # Enable fetching the cursor position in bash a
     foreground = "yellow"
     template   = "󰔟 {{ .FormattedMs }} "
     [blocks.segments.properties]
-      threshold = 1000     # Only show if execution time is greater than this value.
+      threshold = 1000     # Only show if execution time exceeds this value.
       style     = "austin"
 
-    # Shell information
-    [[blocks.segments]]
-        type       = "shell"
-        style      = "plain"
-        foreground = "cyan"
-        template   = " {{ .Name }} "
+  # Shell info
+  [[blocks.segments]]
+    type       = "shell"
+    style      = "plain"
+    foreground = "cyan"
+    template   = " {{ .Name }} "
 
   # Top-right corner and horizontal line
   [[blocks.segments]]
@@ -99,18 +131,18 @@ enable_cursor_positioning = true # Enable fetching the cursor position in bash a
     foreground = "darkGray"
     template   = "╰─"
 
-  # Prompt symbol - changes color based on status and root permissions
+  # Prompt symbol - color changes by status and root
   [[blocks.segments]]
     type = "text"
     style = "plain"
     foreground = "lightGreen"
     foreground_templates = [
-      "{{ if ne .Code 0 }}lightRed{{ end }}",  # Red for error
-      "{{if .Root}} lightYellow {{ end }}",    # Yellow for root user
+      "{{ if ne .Code 0 }}lightRed{{ end }}", # Red if error
+      "{{if .Root}} lightYellow {{ end }}",   # Yellow if root
     ]
     template = "{{ if .Root }} #{{ else }}❯{{ end }} "
 
-# 4. Bottom right: Bottom-right arc, placed in the rprompt block
+# 4. Bottom right: Bottom-right arc, in rprompt block
 [[blocks]]
   type = "rprompt"
 

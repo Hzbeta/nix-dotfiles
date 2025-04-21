@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   shellCommon = import ./shell-common.nix;
@@ -36,8 +36,11 @@ in
         "ohmyzsh/ohmyzsh path:plugins/command-not-found" # Package suggestions
       ];
     };
-    initExtra = ''
+    initContent = lib.mkAfter ''
+      # For autosuggestions
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#757575,underline"
+
+      # Set preview style for enhancd
       export ENHANCD_FILTER="fzf --preview '
         eza -al --tree --level 1 --group-directories-first --git-ignore --header --git --icons=auto \
         --color=always --hyperlink --no-user --no-time --no-filesize --no-permissions {}' \
