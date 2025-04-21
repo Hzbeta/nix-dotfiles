@@ -1,5 +1,6 @@
 # Defines user-specific configuration values.
 {
+  system = "x86_64-linux";
   user = {
     name = "hzbeta";
     gitName = "Hzbeta";
