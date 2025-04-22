@@ -7,8 +7,8 @@
   ];
 
   programs.gpg = {
-    package = pkgs.gnupg;
     enable = true;
+    package = pkgs.gnupg;
     settings = {
       default-key = myConfig.user.email;
     };
