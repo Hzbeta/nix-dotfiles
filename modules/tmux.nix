@@ -4,6 +4,7 @@
   programs.tmux = {
     # Use <prefix> + Shift-r to reload the config
     enable = true;
+    package = pkgs.tmux;
     shell = "${pkgs.zsh}/bin/zsh";
     mouse = true; # Enable mouse support
     clock24 = true; # Use 24-hour clock
