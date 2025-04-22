@@ -8,5 +8,7 @@
     ./fd.nix
     ./btop.nix
     ./bat.nix
+    ./fzf.nix
+    ./eza.nix
   ];
 }
