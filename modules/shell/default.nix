@@ -1,7 +1,7 @@
 {
   imports = [
-    ./bash.nix
-    ./zsh.nix
-    ./oh-my-posh
+    ./bash.nix # The default shell
+    ./zsh.nix # Better than bash
+    ./oh-my-posh # A cross-platform shell prompt engine
   ];
 }
