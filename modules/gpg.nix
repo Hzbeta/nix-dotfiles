@@ -3,7 +3,7 @@
 {
   # Installation of gpg and pinentry
   home.packages = with pkgs; [
-    pinentry-qt  # Install pinentry qt for GUI, it also contains pinentry-tty and pinentry-curses
+    pinentry-qt # Install pinentry qt for GUI, it also contains pinentry-tty and pinentry-curses
   ];
 
   programs.gpg = {
