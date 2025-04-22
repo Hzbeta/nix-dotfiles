@@ -10,5 +10,6 @@
     ./bat.nix
     ./fzf.nix
     ./eza.nix
+    ./yazi.nix
   ];
 }
