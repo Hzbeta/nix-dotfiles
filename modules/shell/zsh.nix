@@ -45,6 +45,9 @@ in
         eza -al --tree --level 1 --group-directories-first --git-ignore --header --git --icons=auto \
         --color=always --hyperlink --no-user --no-time --no-filesize --no-permissions {}' \
         --preview-window=right,50% --height=50% --reverse --ansi"
+
+      # Set cursor style for zsh
+      echo -ne '\e[6 q' # Bar steady cursor
     '';
   };
 }
