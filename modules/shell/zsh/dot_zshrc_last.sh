@@ -21,7 +21,7 @@ set_nix_zsh_as_default() {
   fi
 
   local nix_zsh_path
-  nix_zsh_path="$(which zsh)"
+  nix_zsh_path="$(command -v zsh)"
 
   # Check if the resolved path is from /nix/store, which is not stable
   if [[ "$nix_zsh_path" == *"/nix/store/"* ]]; then
@@ -29,7 +29,7 @@ set_nix_zsh_as_default() {
     echo "    $nix_zsh_path"
     echo "⚠️  This path is not suitable for setting as the default shell"
     echo "    because Nix store paths are versioned and may change after updates."
-    echo "    The current result is from 'which zsh', which is no longer reliable."
+    echo "    The current result is from 'command -v zsh', which is no longer reliable."
     return 1
   fi
 
