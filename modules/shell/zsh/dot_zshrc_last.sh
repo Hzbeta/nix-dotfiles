@@ -1,3 +1,6 @@
+# Default cursor style
+default_cursor_style='\e[6 q' # Steady bar cursor
+
 # For autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#757575,underline"
 
@@ -8,7 +11,21 @@ eza -al --tree --level 1 --group-directories-first --git-ignore --header --git -
 --preview-window=right,50% --height=50% --reverse --ansi"
 
 # Set cursor style for zsh
-echo -ne '\e[6 q' # Bar steady cursor
+printf "$default_cursor_style"
+
+# Shell wrapper `y` for yazi, use `q` to quit and change directory
+# use `Q` (Shift + q) to quit and not change directory
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+
+  # Force to reset the cursor style, see https://github.com/sxyazi/yazi/discussions/1612
+  printf "$default_cursor_style"
+}
 
 # A function to set zsh as the default shell
 set_nix_zsh_as_default() {
