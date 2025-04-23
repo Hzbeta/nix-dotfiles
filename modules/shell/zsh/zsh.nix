@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  shellCommon = import ./shell-common.nix;
+  shellCommon = import ./../shell-common.nix;
 in
 {
   programs.zsh = {
@@ -36,18 +36,6 @@ in
         "ohmyzsh/ohmyzsh path:plugins/command-not-found" # Package suggestions
       ];
     };
-    initContent = lib.mkAfter ''
-      # For autosuggestions
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#757575,underline"
-
-      # Set preview style for enhancd
-      export ENHANCD_FILTER="fzf --preview '
-        eza -al --tree --level 1 --group-directories-first --git-ignore --header --git --icons=auto \
-        --color=always --hyperlink --no-user --no-time --no-filesize --no-permissions {}' \
-        --preview-window=right,50% --height=50% --reverse --ansi"
-
-      # Set cursor style for zsh
-      echo -ne '\e[6 q' # Bar steady cursor
-    '';
+    initContent = lib.mkAfter (builtins.readFile ./dot_zshrc_last.sh);
   };
 }
