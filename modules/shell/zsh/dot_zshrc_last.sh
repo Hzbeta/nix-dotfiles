@@ -12,6 +12,14 @@ echo -ne '\e[6 q' # Bar steady cursor
 
 # A function to set zsh as the default shell
 set_nix_zsh_as_default() {
+
+  # Check if the OS is NixOS
+  if grep -q '^ID=nixos' /etc/os-release 2>/dev/null; then
+    echo "❌ This function is not suitable for NixOS."
+    echo "    On NixOS, login shells should be configured via the system configuration (e.g., /etc/nixos/configuration.nix)."
+    return 1
+  fi
+
   local zsh_path
   nix_zsh_path="$(which zsh)"
 
@@ -39,7 +47,7 @@ set_nix_zsh_as_default() {
   # Ensure the resolved zsh path is present in /etc/shells
   if ! grep -Fxq "$nix_zsh_path" /etc/shells; then
     echo "🔧 Adding $nix_zsh_path to /etc/shells"
-    echo "$nix_zsh_path" | sudo tee -a /etc/shells > /dev/null
+    echo "$nix_zsh_path" | sudo tee -a /etc/shells >/dev/null
   else
     echo "ℹ️ $nix_zsh_path already exists in /etc/shells"
   fi
