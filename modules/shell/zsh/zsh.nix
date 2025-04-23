@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  myConfig,
+  ...
+}:
 
 let
   shellCommon = import ./../shell-common.nix;
@@ -36,6 +41,12 @@ in
         "ohmyzsh/ohmyzsh path:plugins/command-not-found" # Package suggestions
       ];
     };
-    initContent = lib.mkAfter (builtins.readFile ./dot_zshrc_last.sh);
+    initContent = lib.mkAfter (
+      ''
+        # Set cursor style
+        printf "${myConfig.shell.cursorStyle}"
+      ''
+      + builtins.readFile ./dot_zshrc_last.sh
+    );
   };
 }

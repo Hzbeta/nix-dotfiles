@@ -7,4 +7,7 @@
     email = "hzbeta@yahoo.com";
     gpgSigningKey = "439E1391173EE2E5";
   };
+  shell = {
+    cursorStyle = "\\e[6 q"; # Steady bar style
+  };
 }

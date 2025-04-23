@@ -30,8 +30,6 @@
       du-dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
       jq # A lightweight and flexible command-line JSON processor.
-      poppler # A PDF rendering library, for yazi.
-      resvg # A tiny SVG rendering library, for yazi.
     ])
     ++ (with pkgsUnstable; [
       # Packages from the unstable Nixpkgs channel.
