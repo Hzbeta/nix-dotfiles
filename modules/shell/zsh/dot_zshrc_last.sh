@@ -20,7 +20,7 @@ set_nix_zsh_as_default() {
     return 1
   fi
 
-  local zsh_path
+  local nix_zsh_path
   nix_zsh_path="$(which zsh)"
 
   # Check if the resolved path is from /nix/store, which is not stable
@@ -54,5 +54,7 @@ set_nix_zsh_as_default() {
 
   # Set zsh as the default shell using the stable symlink path
   echo "🔁 Changing default shell to $nix_zsh_path"
-  sudo usermod -s "$nix_zsh_path" "$USER"
+  sudo usermod -s "$nix_zsh_path" "$USER" \
+    && echo "🎉 Done." \
+    || echo "❌ Failed to change shell." >&2
 }
