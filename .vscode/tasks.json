@@ -21,6 +21,16 @@
                     "label": "$(sync) HMS"
                 }
             }
+        },
+        {
+            "label": "nix flake update",
+            "type": "shell",
+            "command": "nix flake update --flake \"${workspaceFolder}\"",
+            "options": {
+                "statusbar": {
+                    "label": "$(sync) NFU"
+                }
+            }
         }
     ]
 }
