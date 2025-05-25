@@ -5,12 +5,12 @@
     # Also include the unstable version of Nixpkgs for some packages.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Specify the source of Home Manager and Nixpkgs.
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # TODO Switch to unstable for now, waiting for 25.05
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      # `program.<name>.enable = true;` will use 24.11 channel
-      # url = "github:nix-community/home-manager/release-24.11";
-      url = "github:nix-community/home-manager"; # TODO Switch to unstable for now, waiting for 25.05
+      # `program.<name>.enable = true;` will use 25.05 channel
+      url = "github:nix-community/home-manager/release-25.05";
+      # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
