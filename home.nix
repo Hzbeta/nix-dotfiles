@@ -25,7 +25,7 @@
   # environment.
   home.packages =
     (with pkgs; [
-      # Packages from the stable 24.11 Nixpkgs channel.
+      # Packages from the stable Nixpkgs channel.
       nixfmt-rfc-style # A tool to format Nix code.
       du-dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
