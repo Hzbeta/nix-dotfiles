@@ -7,8 +7,8 @@ enable_cursor_positioning = true                                                
   Space = "\u2007" # Special space char, width 1, prevents OMP from treating
   # template as empty (needed for .Segments.Contains "PreGit")
   DefaultPathMaxWidth = 50
-  PathMaxWidthPercentWithGit    = 40
-  PathMaxWidthPercentWithoutGit = 60
+  PathMaxWidthPercentWithGit    = 25
+  PathMaxWidthPercentWithoutGit = 50
 
 # Transient prompt config - simplified prompt for secondary lines
 [transient_prompt]
