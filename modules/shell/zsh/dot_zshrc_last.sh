@@ -35,7 +35,7 @@ set_nix_zsh_as_default() {
   local real_nix_zsh_path
   real_nix_zsh_path="$(readlink -f "$nix_zsh_path")"
   local real_default_shell_path
-  real_default_shell_path="$(readlink -f "$SHELL")"
+  real_default_shell_path="$(nix run nixpkgs#getent -- passwd "$USER" | cut -d: -f7 | xargs readlink -f)"
 
   if [[ "$real_default_shell_path" == "$real_nix_zsh_path" ]]; then
     echo "✅ zsh is already the default shell."

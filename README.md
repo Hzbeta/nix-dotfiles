@@ -129,3 +129,4 @@ A minimal theme file provides the glyph variables so the configuration can be re
 * Home‑Manager will install itself and apply the configuration, you don't need to install it separately.
 * The `-b` flag backs up existing files (e.g., `.bashrc`) with a `.home-manager-backup` suffix during the first `switch`.
 * The `-b` option is only needed during the first `switch`. For subsequent configuration changes, simply run `hms`, which is an alias defined in `shell-common.nix`.
+* Switch to `zsh` and use `set_nix_zsh_as_default` to make `zsh` your default shell.
