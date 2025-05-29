@@ -1,6 +1,6 @@
 # Nix Dotfiles
 
-> **One flake, reproducible everywhere.**
+> **One flake, reproducible everywhere.** <br>
 > Declarative, version‑controlled config for my Linux workstations, powered by **Nix + Home‑Manager**.
 
 ## Quick Look
