@@ -50,6 +50,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".vscode-server/server-env-setup" = { # For VS Code remote development.
+      text = ''
+        if [ -f "${config.home.homeDirectory}/.profile" ]; then
+          . "${config.home.homeDirectory}/.profile"
+        fi
+      '';
+      executable = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through
