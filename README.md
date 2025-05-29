@@ -113,29 +113,19 @@ A minimal theme file provides the glyph variables so the configuration can be re
 
 ### Step 1 – Prepare Your Environment
 
-```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm
-```
+* Install a Nerd Font for full icon support.
+* Install nix with: `curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm`
+* Restart your terminal to activate nix commands
 
-*Enable flakes* and install a Nerd Font for full icon support.
+### Step 2 – Fork the Repository and Edit
 
-### Step 2 – Fork the Config
-
-```bash
-git clone https://github.com/hzbeta/nix-dotfiles.git
-# Edit my-config.nix with your details
-```
-
-Push your fork to **`~/.config/home-manager`**:
-
-```bash
-git clone <your-repo-url> ~/.config/home-manager
-```
+* Fork this repository to your own GitHub account.
+* Change the `my-config.nix` file to include your personal details, such as your name, email, and any other custom settings you want to apply.
+* Clone your forked repository with: `nix run nixpkgs#git clone <your-repo-url> ~/.config/home-manager`.
 
 ### Step 3 – Activate
 
-```bash
-nix run home-manager -- switch --flake ~/.config/home-manager
-```
-
-Home‑Manager installs itself and applies the configuration in one command.
+* Activate the configuration by running: `nix run nixpkgs#home-manager -- switch -b home-manager-backup --flake ~/.config/home-manager`
+* Home‑Manager will install itself and apply the configuration, you don't need to install it separately.
+* The `-b` flag backs up existing files (e.g., `.bashrc`) with a `.home-manager-backup` suffix during the first `switch`.
+* The `-b` option is only needed during the first `switch`. For subsequent configuration changes, simply run `hms`, which is an alias defined in `shell-common.nix`.
