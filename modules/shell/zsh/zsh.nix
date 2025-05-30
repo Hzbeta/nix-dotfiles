@@ -29,7 +29,7 @@ in
       plugins = [
         "getantidote/use-omz" # Required for oh-my-zsh plugins
         "zsh-users/zsh-completions" # Additional completions, must before compinit
-        "mattmc3/ez-compinit" # Optimized compinit
+        # "mattmc3/ez-compinit" # Optimized compinit, should not be used with `getantidote/use-omz`
         "Aloxaf/fzf-tab" # Enhanced tab completion with fzf, must after compinit
         "zsh-users/zsh-autosuggestions" # Fish-like autosuggestions, must after fzf-tab
         "zdharma-continuum/fast-syntax-highlighting" # Syntax highlighting, must after fzf-tab

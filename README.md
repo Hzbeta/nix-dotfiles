@@ -58,19 +58,18 @@
 
 This configuration uses **Antidote** to manage Zsh plugins:
 
-| Plugin                                       | Description                              |
-| -------------------------------------------- | ---------------------------------------- |
-| `getantidote/use-omz`                        | Loads Oh‑My‑Zsh in the correct order     |
-| `zsh-users/zsh-completions`                  | Hundreds of extra completions            |
-| `mattmc3/ez-compinit`                        | Batches `compinit`, cutting startup time |
-| `Aloxaf/fzf-tab`                             | FZF‑powered tab‑completion everywhere    |
-| `zsh-users/zsh-autosuggestions`              | Inline history suggestions               |
-| `zdharma-continuum/fast-syntax-highlighting` | Native‑speed syntax colors               |
-| `b4b4r07/enhancd`                            | Fuzzy `cd` with tree preview             |
-| `joshskidmore/zsh-fzf-history-search`        | Rich Ctrl‑R history search               |
-| `ohmyzsh/plugins/extract`                    | Universal `extract` function             |
-| `ohmyzsh/plugins/sudo`                       | Double‑ESC to prepend `sudo`             |
-| `ohmyzsh/plugins/command-not-found`          | Smart package hints                      |
+| Plugin                                       | Description                            |
+| -------------------------------------------- | -------------------------------------- |
+| `getantidote/use-omz`                        | Using Oh-My-Zsh with antidote seamless |
+| `zsh-users/zsh-completions`                  | Hundreds of extra completions          |
+| `Aloxaf/fzf-tab`                             | FZF‑powered tab‑completion everywhere  |
+| `zsh-users/zsh-autosuggestions`              | Inline history suggestions             |
+| `zdharma-continuum/fast-syntax-highlighting` | Native‑speed syntax colors             |
+| `b4b4r07/enhancd`                            | Fuzzy `cd` with tree preview           |
+| `joshskidmore/zsh-fzf-history-search`        | Rich Ctrl‑R history search             |
+| `ohmyzsh/plugins/extract`                    | Universal `extract` function           |
+| `ohmyzsh/plugins/sudo`                       | Double‑ESC to prepend `sudo`           |
+| `ohmyzsh/plugins/command-not-found`          | Smart package hints                    |
 
 Additional tweaks live in `dot_zshrc_last.sh`:
 
