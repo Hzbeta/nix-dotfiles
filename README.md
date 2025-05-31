@@ -27,16 +27,17 @@
 ├─ .vscode/
 │  └─ tasks.json        ──▷ VS Code shortcuts: switch / update
 └─ modules/             ──▷ each tool lives in its own module
-   ├─ git.nix           ──▷ git prefs + commit signing
-   ├─ gpg.nix           ──▷ GPG agent & pinentry
-   ├─ tmux.nix          ──▷ hotkeys, plugins, nerd‑font status bar
-   ├─ yazi.nix          ──▷ `yy` wrapper + preview deps
-   ├─ eza.nix           ──▷ colourful `ls` defaults
    ├─ bat.nix           ──▷ syntax‑highlighted `cat`
+   ├─ btop.nix          ──▷ minimalist system monitor skin
+   ├─ eza.nix           ──▷ colourful `ls` defaults
    ├─ fd.nix            ──▷ fast, friendly `find`
    ├─ fzf.nix           ──▷ fuzzy finder everywhere
-   ├─ btop.nix          ──▷ minimalist system monitor skin
+   ├─ git.nix           ──▷ git prefs + commit signing
+   ├─ gpg.nix           ──▷ GPG agent & pinentry
+   ├─ nix-index.nix     ──▷ fast package lookup & missing command hints
    ├─ ssh.nix           ──▷ OpenSSH client package
+   ├─ tmux.nix          ──▷ hotkeys, plugins, nerd‑font status bar
+   ├─ yazi.nix          ──▷ `yy` wrapper + preview deps
    └─ shell/
       ├─ shell-common.nix     ─▷ shared aliases (`hms`, `nfu`, …)
       ├─ bash.nix             ─▷ conservative fallback shell
@@ -69,7 +70,6 @@ This configuration uses **Antidote** to manage Zsh plugins:
 | `joshskidmore/zsh-fzf-history-search`        | Rich Ctrl‑R history search             |
 | `ohmyzsh/plugins/extract`                    | Universal `extract` function           |
 | `ohmyzsh/plugins/sudo`                       | Double‑ESC to prepend `sudo`           |
-| `ohmyzsh/plugins/command-not-found`          | Smart package hints                    |
 
 Additional tweaks live in `dot_zshrc_last.sh`:
 

@@ -38,7 +38,6 @@ in
         "ohmyzsh/ohmyzsh path:lib" # oh-my-zsh core library
         "ohmyzsh/ohmyzsh path:plugins/extract" # Universal archive extractor (alias: x)
         "ohmyzsh/ohmyzsh path:plugins/sudo" # Double ESC to prefix sudo
-        "ohmyzsh/ohmyzsh path:plugins/command-not-found" # Package suggestions
       ];
     };
     initContent = lib.mkAfter (
