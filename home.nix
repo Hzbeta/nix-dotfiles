@@ -49,10 +49,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".vscode-server/server-env-setup" = { # For VS Code remote development.
+
+    # For VS Code remote development.
+    ".vscode-server/server-env-setup" = {
       text = ''
-        if [ -f "${config.home.homeDirectory}/.profile" ]; then
-          . "${config.home.homeDirectory}/.profile"
+        if [ -f "$HOME/.profile" ]; then
+          . "$HOME/.profile"
         fi
       '';
       executable = true;
