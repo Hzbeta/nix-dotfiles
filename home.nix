@@ -30,7 +30,6 @@
       du-dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
       jq # A lightweight and flexible command-line JSON processor.
-      typst # A modern typesetting system that is easy to use.
     ])
     ++ (with pkgsUnstable; [
       # Packages from the unstable Nixpkgs channel.

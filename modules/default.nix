@@ -11,6 +11,7 @@
     ./nix-index.nix # Nix package index for searching packages
     ./ssh.nix # SSH client
     ./tmux.nix # A terminal multiplexer, powerful for remote sessions
+    ./typst.nix # A modern typesetting system
     ./yazi.nix # A powerful file explorer
   ];
 }
