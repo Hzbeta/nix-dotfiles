@@ -30,6 +30,7 @@
       du-dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
       jq # A lightweight and flexible command-line JSON processor.
+      unzip # A utility to unpack zip files.
     ])
     ++ (with pkgsUnstable; [
       # Packages from the unstable Nixpkgs channel.
