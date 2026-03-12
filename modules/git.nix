@@ -6,13 +6,15 @@
     # We can use the unstable version of git if we want to.
     # package = pkgsUnstable.git;
     package = pkgs.git;
-    userName = myConfig.user.gitName;
-    userEmail = myConfig.user.email;
     signing = {
       key = myConfig.user.gpgSigningKey;
       signByDefault = true;
     };
-    extraConfig = {
+    settings = {
+      user = {
+        name = myConfig.user.gitName;
+        email = myConfig.user.email;
+      };
       init.defaultBranch = "main";
       pull.rebase = true;
     };

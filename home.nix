@@ -27,7 +27,7 @@
     (with pkgs; [
       # Packages from the stable Nixpkgs channel.
       nixfmt-rfc-style # A tool to format Nix code.
-      du-dust # du + rust = dust. Like du but more intuitive.
+      dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
       jq # A lightweight and flexible command-line JSON processor.
       unzip # A utility to unpack zip files.

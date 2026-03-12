@@ -13,8 +13,8 @@
 
 | Configs | Highlights                                                                |
 | ------- | ------------------------------------------------------------------------- |
-| `Zsh`   | Antidote‑managed Zsh, FZF UX, autosuggestions, Oh‑My‑Posh prompt          |
-| `Tmux`  | Ctrl‑x prefix, mouse, 24h clock, large scrollback, resurrect, sleek theme |
+| `Zsh`  | Antidote‑managed Zsh, FZF UX, autosuggestions, Oh‑My‑Posh prompt          |
+| `Tmux` | Ctrl‑x prefix, mouse, 24h clock, large scrollback, resurrect, sleek theme |
 
 ## Blueprint – One Tree to Rule Them All
 
@@ -35,9 +35,9 @@
    ├─ git.nix           ──▷ git prefs + commit signing
    ├─ gpg.nix           ──▷ GPG agent & pinentry
    ├─ nix-index.nix     ──▷ fast package lookup & missing command hints
-   ├─ ssh.nix           ──▷ OpenSSH client package
+   ├─ ssh.nix           ──▷ minimal explicit OpenSSH defaults
+   ├─ superfile.nix     ──▷ unstable package + `spf` shell integration
    ├─ tmux.nix          ──▷ hotkeys, plugins, nerd‑font status bar
-   ├─ yazi.nix          ──▷ `yy` wrapper + preview deps
    └─ shell/
       ├─ shell-common.nix     ─▷ shared aliases (`hms`, `nfu`, …)
       ├─ bash.nix             ─▷ conservative fallback shell
@@ -129,3 +129,4 @@ A minimal theme file provides the glyph variables so the configuration can be re
 * The `-b` flag backs up existing files (e.g., `.bashrc`) with a `.home-manager-backup` suffix during the first `switch`.
 * The `-b` option is only needed during the first `switch`. For subsequent configuration changes, simply run `hms`, which is an alias defined in `shell-common.nix`.
 * Switch to `zsh` and use `set_nix_zsh_as_default` to make `zsh` your default shell.
+* In VS Code, the task labels `HMS` and `NFU` are the expected entrypoints for switch/update.
