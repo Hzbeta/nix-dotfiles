@@ -109,7 +109,8 @@
   };
 
   programs.zsh.initContent = lib.mkBefore ''
-    # Auto start tmux unless already inside or in VS Code
-    [[ -z $TMUX && $TERM_PROGRAM != vscode ]] && exec tmux new -As "main"
+    if [[ $- == *i* && -z ''${TMUX-} && ''${TERM_PROGRAM-} != vscode && ''${SHLVL:-0} -eq 1 ]]; then
+      exec ${pkgs.tmux}/bin/tmux new -As main
+    fi
   '';
 }
