@@ -24,6 +24,7 @@
 ├─ flake.lock           ──▷ pinned nixpkgs & HM revisions
 ├─ home.nix             ──▷ Home‑Manager options & packages
 ├─ my-config.nix        ──▷ personal constants
+├─ nixpkgs-config.nix   ──▷ package list + stable/free flags
 ├─ .vscode/
 │  └─ tasks.json        ──▷ VS Code shortcuts: switch / update
 └─ modules/             ──▷ each tool lives in its own module
@@ -34,6 +35,7 @@
    ├─ fzf.nix           ──▷ fuzzy finder everywhere
    ├─ git.nix           ──▷ git prefs + commit signing
    ├─ gpg.nix           ──▷ GPG agent & pinentry
+   ├─ hermes-agent.nix  ──▷ Hermes Agent runtime + gateway setup
    ├─ nix-index.nix     ──▷ fast package lookup & missing command hints
    ├─ ssh.nix           ──▷ minimal explicit OpenSSH defaults
    ├─ superfile.nix     ──▷ unstable package + `spf` shell integration
