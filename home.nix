@@ -26,11 +26,17 @@
   home.packages =
     (with pkgs; [
       # Packages from the stable Nixpkgs channel.
+      ffmpeg # A complete solution to record, convert, and stream audio and video.
+      gh # GitHub CLI.
+      nodejs # JavaScript runtime used by many CLI tools.
       nixfmt-rfc-style # A tool to format Nix code.
       dust # du + rust = dust. Like du but more intuitive.
       duf # Disk Usage/Free Utility. A better du.
       jq # A lightweight and flexible command-line JSON processor.
+      ripgrep # Fast recursive search tool.
       unzip # A utility to unpack zip files.
+      uv # Fast Python package and project manager.
+      wget # Command-line downloader.
     ])
     ++ (with pkgsUnstable; [
       # Packages from the unstable Nixpkgs channel.

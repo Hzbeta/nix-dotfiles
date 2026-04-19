@@ -7,6 +7,7 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hermesAgent.url = "github:NousResearch/hermes-agent";
     home-manager = {
       # `program.<name>.enable = true;` will use 25.05 channel
       url = "github:nix-community/home-manager/release-25.11";
@@ -19,6 +20,7 @@
     {
       nixpkgs,
       nixpkgs-unstable,
+      hermesAgent,
       home-manager,
       ...
     }:
@@ -43,7 +45,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          inherit pkgsUnstable myConfig;
+          inherit pkgsUnstable myConfig hermesAgent;
         };
       };
     };
