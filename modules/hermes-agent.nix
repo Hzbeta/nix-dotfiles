@@ -11,7 +11,7 @@ let
   hermesHome = "${homeDir}/.hermes";
   hermesManagedRoot = "${homeDir}/.local/share/rulesync/hermes";
   hermesManagedSkills = "${hermesManagedRoot}/skills";
-  hermesPackage = hermesAgent.packages.${pkgs.system}.default;
+  hermesPackage = hermesAgent.packages.${pkgs.stdenv.hostPlatform.system}.default;
   hermesCli = "${hermesPackage}/bin/hermes";
   hermesTerminalBackend = "local";
   hermesTerminalTimeout = 300;
