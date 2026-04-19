@@ -34,7 +34,8 @@ in
     HERMES_HOME = hermesHome;
   };
 
-  home.activation.hermesManagedSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.hermesManagedSetup = lib.hm.dag.entryAfter [ "installPackages" ] ''
+
     $DRY_RUN_CMD mkdir -p '${hermesHome}'
     $DRY_RUN_CMD mkdir -p '${hermesManagedRoot}'
     $DRY_RUN_CMD mkdir -p '${hermesManagedSkills}'

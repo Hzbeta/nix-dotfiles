@@ -27,9 +27,18 @@
     let
       # Import my configuration
       myConfig = import ./my-config.nix;
+      nixpkgsConfig = import ./nixpkgs-config.nix;
       system = myConfig.system;
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
+      allowUnfreePredicate = pkg:
+        builtins.elem (nixpkgs.lib.getName pkg) nixpkgsConfig.allowUnfree;
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = allowUnfreePredicate;
+      };
+      pkgsUnstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfreePredicate = allowUnfreePredicate;
+      };
     in
     {
       homeConfigurations.${myConfig.user.name} = home-manager.lib.homeManagerConfiguration {
@@ -45,7 +54,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          inherit pkgsUnstable myConfig hermesAgent;
+          inherit pkgsUnstable myConfig hermesAgent nixpkgsConfig;
         };
       };
     };

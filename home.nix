@@ -3,6 +3,7 @@
   pkgs,
   pkgsUnstable,
   myConfig,
+  nixpkgsConfig,
   ...
 }:
 
@@ -23,25 +24,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+  # Package lists live in nixpkgs-config.nix.
   home.packages =
-    (with pkgs; [
-      # Packages from the stable Nixpkgs channel.
-      ffmpeg # A complete solution to record, convert, and stream audio and video.
-      gh # GitHub CLI.
-      nodejs # JavaScript runtime used by many CLI tools.
-      nixfmt-rfc-style # A tool to format Nix code.
-      dust # du + rust = dust. Like du but more intuitive.
-      duf # Disk Usage/Free Utility. A better du.
-      jq # A lightweight and flexible command-line JSON processor.
-      ripgrep # Fast recursive search tool.
-      unzip # A utility to unpack zip files.
-      uv # Fast Python package and project manager.
-      wget # Command-line downloader.
-    ])
-    ++ (with pkgsUnstable; [
-      # Packages from the unstable Nixpkgs channel.
-
-    ]);
+    (map (name: builtins.getAttr name pkgs) nixpkgsConfig.homePackages.stable)
+    ++ (map (name: builtins.getAttr name pkgsUnstable) nixpkgsConfig.homePackages.unstable);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
