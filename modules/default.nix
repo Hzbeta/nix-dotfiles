@@ -10,9 +10,11 @@
     ./gpg.nix # For signing commits
     ./hermes-agent.nix # Hermes Agent and companion-managed runtime
     ./nix-index.nix # Nix package index for searching packages
+    ./nodejs.nix # Node.js and npm policy
     ./ssh.nix # SSH client
     ./superfile.nix # A beautiful file manager
     ./tmux.nix # A terminal multiplexer, powerful for remote sessions
     ./typst.nix # A modern typesetting system
+    ./uv.nix # uv and package age policy
   ];
 }
