@@ -8,7 +8,7 @@
     ./fzf.nix # A command-line fuzzy finder
     ./git.nix # A source control system
     ./gpg.nix # For signing commits
-    ./hermes-agent.nix # Hermes Agent and companion-managed runtime
+    # ./hermes-agent.nix # Hermes Agent and companion-managed runtime
     ./nix-index.nix # Nix package index for searching packages
     ./nodejs.nix # Node.js and npm policy
     ./ssh.nix # SSH client
